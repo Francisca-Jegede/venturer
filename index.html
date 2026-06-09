@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Venturer — Trade Smarter. Explore More. Win Consistently.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-trail" id="cursorTrail"></div>
+
+  <!-- Loading Screen -->
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <div class="loader-logo">V</div>
+      <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
+      <div class="loader-text">Initializing Venturer...</div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-v">V</span>
+        <span class="logo-text">VENTURER</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#features" class="nav-link">Features</a></li>
+        <li><a href="#pricing" class="nav-link">Pricing</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#faq" class="nav-link">FAQ</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="#" class="btn btn-ghost">Login</a>
+        <a href="#pricing" class="btn btn-gold">Get Started</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- SECTION 1: HERO -->
+  <section class="hero" id="hero">
+    <canvas id="particleCanvas"></canvas>
+    <div class="hero-bg-gradient"></div>
+    <div class="mountain-scene">
+      <div class="mountain mountain-far"></div>
+      <div class="mountain mountain-mid"></div>
+      <div class="mountain mountain-near"></div>
+      <div class="mountain-fog"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-left">
+        <div class="hero-badge reveal">
+          <span class="badge-dot"></span>
+          AI-Powered Trading Bot
+        </div>
+        <h1 class="hero-headline reveal">
+          Trade Smarter.<br/>
+          Explore More.<br/>
+          <span class="gold-text">Win Consistently.</span>
+        </h1>
+        <p class="hero-sub reveal">
+          Venturer combines AI-powered analysis, intelligent automation, and disciplined risk management to help traders navigate the markets with confidence.
+        </p>
+        <div class="hero-actions reveal">
+          <a href="#pricing" class="btn btn-gold btn-lg">Get Started</a>
+          <a href="#dashboard" class="btn btn-outline btn-lg">
+            <span class="play-icon">▶</span> View Demo
+          </a>
+        </div>
+        <div class="hero-social-proof reveal">
+          <div class="avatars">
+            <div class="avatar av1"></div>
+            <div class="avatar av2"></div>
+            <div class="avatar av3"></div>
+            <div class="avatar av4"></div>
+          </div>
+          <span>Trusted by <strong>10,000+</strong> traders worldwide</span>
+        </div>
+      </div>
+
+      <div class="hero-right reveal">
+        <div class="dashboard-float">
+          <!-- Mini Dashboard -->
+          <div class="dash-card dash-main glass">
+            <div class="dash-header">
+              <span class="dash-title">Portfolio Overview</span>
+              <span class="dash-date">Jun 09, 2026</span>
+            </div>
+            <div class="dash-stats">
+              <div class="dash-stat">
+                <span class="stat-label">Total Balance</span>
+                <span class="stat-value">$24,850.75</span>
+                <span class="stat-change positive">+12.48%</span>
+              </div>
+              <div class="dash-stat">
+                <span class="stat-label">Daily P&L</span>
+                <span class="stat-value">$1,250.30</span>
+                <span class="stat-change positive">+5.32%</span>
+              </div>
+              <div class="dash-stat">
+                <span class="stat-label">Win Rate</span>
+                <span class="stat-value">72.4%</span>
+                <span class="stat-change positive">+8.20%</span>
+              </div>
+            </div>
+            <div class="dash-chart">
+              <canvas id="heroChart" width="340" height="100"></canvas>
+            </div>
+          </div>
+
+          <!-- Signal Card -->
+          <div class="dash-card dash-signal glass">
+            <div class="signal-header">
+              <span class="signal-badge">🔥 AI Signal</span>
+              <span class="signal-pair">EURUSD — LONG</span>
+            </div>
+            <div class="signal-levels">
+              <div><span>Entry</span><span class="mono">1.0850</span></div>
+              <div><span>TP</span><span class="mono positive">1.0925</span></div>
+              <div><span>SL</span><span class="mono negative">1.0810</span></div>
+            </div>
+            <div class="confidence-bar">
+              <div class="conf-label">Confidence <span>78%</span></div>
+              <div class="conf-track"><div class="conf-fill" style="width:78%"></div></div>
+            </div>
+          </div>
+
+          <!-- Win Rate Ring -->
+          <div class="dash-card dash-ring glass">
+            <svg viewBox="0 0 80 80" class="ring-svg">
+              <circle cx="40" cy="40" r="32" fill="none" stroke="#0F2747" stroke-width="7"/>
+              <circle cx="40" cy="40" r="32" fill="none" stroke="#D4AF37" stroke-width="7"
+                stroke-dasharray="142 201" stroke-dashoffset="50" stroke-linecap="round"/>
+            </svg>
+            <div class="ring-label">
+              <span class="ring-val">72%</span>
+              <span class="ring-sub">Win Rate</span>
+            </div>
+          </div>
+
+          <!-- Active Trades -->
+          <div class="dash-card dash-trades glass">
+            <div class="trades-title">Active Trades <span class="badge-count">3</span></div>
+            <div class="trade-row">
+              <span class="pair">EURUSD</span>
+              <span class="direction long">LONG</span>
+              <span class="pnl positive">+$185</span>
+            </div>
+            <div class="trade-row">
+              <span class="pair">GBPUSD</span>
+              <span class="direction long">LONG</span>
+              <span class="pnl negative">-$12</span>
+            </div>
+            <div class="trade-row">
+              <span class="pair">XAUUSD</span>
+              <span class="direction short">SHORT</span>
+              <span class="pnl positive">+$340</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      <span>Scroll to explore</span>
+    </div>
+  </section>
+
+  <!-- SECTION 2: TRUST METRICS -->
+  <section class="metrics" id="metrics">
+    <div class="container">
+      <div class="metrics-grid">
+        <div class="metric-item reveal">
+          <span class="metric-value counter" data-target="10000" data-suffix="+">0</span>
+          <span class="metric-label">Active Traders</span>
+        </div>
+        <div class="metric-item reveal">
+          <span class="metric-value counter" data-target="98.6" data-suffix="%" data-decimal="1">0</span>
+          <span class="metric-label">Signal Accuracy</span>
+        </div>
+        <div class="metric-item reveal">
+          <span class="metric-value counter" data-target="2.1" data-suffix="M+" data-decimal="1">0</span>
+          <span class="metric-label">Signals Delivered</span>
+        </div>
+        <div class="metric-item reveal">
+          <span class="metric-value counter" data-target="4.9" data-suffix="/5" data-decimal="1">0</span>
+          <span class="metric-label">User Rating</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: FEATURES -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Why traders choose us</span>
+        <h2 class="section-title">Everything You Need to Trade at the Highest Level</h2>
+        <p class="section-sub">Six powerful tools built for serious traders who demand precision, speed, and consistency.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card glass reveal" data-delay="0">
+          <div class="feature-icon">
+            <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="#D4AF37" stroke-width="1.5"/><path d="M12 24l5-7 4 4 7-9" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="28" cy="12" r="3" fill="#D4AF37" opacity="0.3"/></svg>
+          </div>
+          <h3>AI-Powered Signals</h3>
+          <p>High-probability trade setups delivered in real-time with entry, TP, and SL levels calculated by our proprietary model.</p>
+          <div class="feature-glow"></div>
+        </div>
+        <div class="feature-card glass reveal" data-delay="100">
+          <div class="feature-icon">
+            <svg viewBox="0 0 40 40" fill="none"><rect x="8" y="14" width="24" height="16" rx="3" stroke="#D4AF37" stroke-width="1.5"/><path d="M14 14v-3a6 6 0 0112 0v3" stroke="#D4AF37" stroke-width="1.5"/><circle cx="20" cy="22" r="3" fill="#D4AF37" opacity="0.4"/></svg>
+          </div>
+          <h3>Automated Trading</h3>
+          <p>Let Venturer execute trades on your behalf with smart risk controls. Set your parameters and let AI do the rest.</p>
+          <div class="feature-glow"></div>
+        </div>
+        <div class="feature-card glass reveal" data-delay="200">
+          <div class="feature-icon">
+            <svg viewBox="0 0 40 40" fill="none"><path d="M20 8l10 18H10L20 8z" stroke="#D4AF37" stroke-width="1.5" stroke-linejoin="round"/><path d="M20 18v-6M20 22v2" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Risk Management</h3>
+          <p>Dynamic position sizing, drawdown limits, and exposure controls protect your capital automatically during volatile sessions.</p>
+          <div class="feature-glow"></div>
+        </div>
+        <div class="feature-card glass reveal" data-delay="300">
+          <div class="feature-icon">
+            <svg viewBox="0 0 40 40" fill="none"><rect x="8" y="8" width="10" height="24" rx="2" stroke="#D4AF37" stroke-width="1.5"/><rect x="22" y="16" width="10" height="16" rx="2" stroke="#D4AF37" stroke-width="1.5"/><rect x="22" y="8" width="10" height="6" rx="2" fill="#D4AF37" opacity="0.2" stroke="#D4AF37" stroke-width="1.5"/></svg>
+          </div>
+          <h3>Portfolio Analytics</h3>
+          <p>Deep insight into your trading performance with profit factor, expectancy, Sharpe ratio, and instrument-level breakdown.</p>
+          <div class="feature-glow"></div>
+        </div>
+        <div class="feature-card glass reveal" data-delay="400">
+          <div class="feature-icon">
+            <svg viewBox="0 0 40 40" fill="none"><rect x="8" y="10" width="24" height="20" rx="3" stroke="#D4AF37" stroke-width="1.5"/><path d="M14 16h12M14 20h8M14 24h6" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Trade Journal</h3>
+          <p>Automatically log every trade with full context. Review your decisions, find patterns, and continuously improve your edge.</p>
+          <div class="feature-glow"></div>
+        </div>
+        <div class="feature-card glass reveal" data-delay="500">
+          <div class="feature-icon">
+            <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="12" stroke="#D4AF37" stroke-width="1.5"/><path d="M20 14v6l4 4" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/><circle cx="20" cy="20" r="2" fill="#D4AF37"/></svg>
+          </div>
+          <h3>24/7 Market Monitoring</h3>
+          <p>Venturer never sleeps. Continuous scanning across Forex, Gold, and Indices ensures you never miss a high-probability setup.</p>
+          <div class="feature-glow"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: HOW IT WORKS -->
+  <section class="how-it-works" id="how">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Simple process</span>
+        <h2 class="section-title">From Setup to Profit in Five Steps</h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline-line" id="timelineLine"></div>
+        <div class="timeline-step reveal">
+          <div class="step-node"><span>01</span></div>
+          <div class="step-content glass">
+            <h3>Connect Account</h3>
+            <p>Link your broker account via our secure API. Venturer supports MetaTrader 4/5 and major brokers.</p>
+          </div>
+        </div>
+        <div class="timeline-step reveal">
+          <div class="step-node"><span>02</span></div>
+          <div class="step-content glass">
+            <h3>Configure Risk</h3>
+            <p>Define your risk tolerance, lot sizing rules, and daily drawdown limits before going live.</p>
+          </div>
+        </div>
+        <div class="timeline-step reveal">
+          <div class="step-node"><span>03</span></div>
+          <div class="step-content glass">
+            <h3>Receive AI Signals</h3>
+            <p>Get real-time trade signals with entry, TP, SL, and confidence score, delivered to your dashboard and Telegram.</p>
+          </div>
+        </div>
+        <div class="timeline-step reveal">
+          <div class="step-node"><span>04</span></div>
+          <div class="step-content glass">
+            <h3>Execute Trades</h3>
+            <p>Trade manually using signals or enable auto-execution. Venturer places and manages orders automatically.</p>
+          </div>
+        </div>
+        <div class="timeline-step reveal">
+          <div class="step-node"><span>05</span></div>
+          <div class="step-content glass">
+            <h3>Track Performance</h3>
+            <p>Monitor equity growth, analyze your journal, and receive weekly AI-generated performance reports.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: DASHBOARD SHOWCASE -->
+  <section class="dashboard-showcase" id="dashboard">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Built for professionals</span>
+        <h2 class="section-title">A Dashboard That Works As Hard As You Do</h2>
+      </div>
+      <div class="showcase-wrapper reveal">
+        <div class="showcase-panel glass">
+          <div class="showcase-topbar">
+            <div class="topbar-dots"><span></span><span></span><span></span></div>
+            <div class="topbar-tabs">
+              <span class="tab active">Dashboard</span>
+              <span class="tab">Signals</span>
+              <span class="tab">Journal</span>
+              <span class="tab">Analytics</span>
+            </div>
+          </div>
+          <div class="showcase-body">
+            <!-- KPIs -->
+            <div class="showcase-kpis">
+              <div class="kpi-card">
+                <span class="kpi-label">Total Balance</span>
+                <span class="kpi-val">$24,850.75</span>
+                <span class="kpi-delta positive">▲ 12.48%</span>
+              </div>
+              <div class="kpi-card">
+                <span class="kpi-label">Profit Factor</span>
+                <span class="kpi-val">2.18</span>
+                <span class="kpi-delta positive">▲ 0.35</span>
+              </div>
+              <div class="kpi-card">
+                <span class="kpi-label">Win Rate</span>
+                <span class="kpi-val">72.4%</span>
+                <span class="kpi-delta positive">▲ 8.2%</span>
+              </div>
+              <div class="kpi-card">
+                <span class="kpi-label">Risk Score</span>
+                <span class="kpi-val risk-low">Low</span>
+                <span class="kpi-delta neutral">Controlled</span>
+              </div>
+            </div>
+            <!-- Main Charts Row -->
+            <div class="showcase-charts">
+              <div class="equity-section">
+                <div class="chart-label">Equity Curve <span class="chart-period">May 12 – Jun 09</span></div>
+                <canvas id="equityChart" width="480" height="140"></canvas>
+              </div>
+              <div class="insight-section glass-inner">
+                <div class="insight-header">
+                  <span class="insight-dot"></span> AI Trade Insight
+                </div>
+                <div class="insight-pair">EURUSD — LONG</div>
+                <div class="insight-row"><span>Entry</span><span class="mono">1.0850</span></div>
+                <div class="insight-row"><span>TP</span><span class="mono positive">1.0925</span></div>
+                <div class="insight-row"><span>SL</span><span class="mono negative">1.0810</span></div>
+                <div class="insight-conf">
+                  <span>Confidence: 78%</span>
+                  <div class="conf-track sm"><div class="conf-fill" style="width:78%"></div></div>
+                </div>
+                <button class="btn btn-gold btn-sm">View Analysis</button>
+              </div>
+            </div>
+            <!-- Trades + Calendar Row -->
+            <div class="showcase-bottom">
+              <div class="trades-section">
+                <div class="chart-label">Active Trades <span class="view-all">View all</span></div>
+                <table class="trades-table">
+                  <thead><tr><th>Pair</th><th>Dir</th><th>Lots</th><th>P&L</th></tr></thead>
+                  <tbody>
+                    <tr><td class="mono">EURUSD</td><td><span class="dir-badge long">L</span></td><td class="mono">0.50</td><td class="positive mono">+$535</td></tr>
+                    <tr><td class="mono">GBPUSD</td><td><span class="dir-badge long">L</span></td><td class="mono">0.40</td><td class="negative mono">-$12</td></tr>
+                    <tr><td class="mono">XAUUSD</td><td><span class="dir-badge short">S</span></td><td class="mono">0.10</td><td class="positive mono">+$340</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="calendar-section">
+                <div class="chart-label">Economic Calendar</div>
+                <div class="cal-event"><span class="cal-time mono">15:30</span><span class="cal-name">CPI m/m</span><span class="cal-impact high">High</span></div>
+                <div class="cal-event"><span class="cal-time mono">17:00</span><span class="cal-name">Core Retail Sales</span><span class="cal-impact high">High</span></div>
+                <div class="cal-event"><span class="cal-time mono">21:00</span><span class="cal-name">FOMC Member Speaks</span><span class="cal-impact medium">Med</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: WHY VENTURER -->
+  <section class="why-venturer" id="about">
+    <div class="container">
+      <div class="why-grid">
+        <div class="why-left reveal">
+          <div class="mountain-logo-wrap">
+            <div class="mountain-logo-bg"></div>
+            <div class="mountain-logo-v">V</div>
+            <div class="mountain-rings">
+              <div class="ring r1"></div>
+              <div class="ring r2"></div>
+              <div class="ring r3"></div>
+            </div>
+          </div>
+        </div>
+        <div class="why-right reveal">
+          <span class="section-eyebrow">The Venturer edge</span>
+          <h2 class="section-title">Built for Traders Who Refuse to Settle</h2>
+          <p class="section-sub">We built Venturer because professional-grade tools shouldn't be reserved for hedge funds. Every feature is designed to give independent traders a real, sustainable edge.</p>
+          <ul class="benefit-list">
+            <li>
+              <span class="benefit-icon">◈</span>
+              <div><strong>Professional-Grade Analysis</strong><p>Institutional-level market structure, order blocks, and liquidity analysis in your hands.</p></div>
+            </li>
+            <li>
+              <span class="benefit-icon">◈</span>
+              <div><strong>Intelligent Risk Control</strong><p>Dynamic risk adjustment based on market conditions, volatility, and your personal drawdown history.</p></div>
+            </li>
+            <li>
+              <span class="benefit-icon">◈</span>
+              <div><strong>Faster Execution</strong><p>Sub-second signal delivery and one-click or automated order placement. No delays, no missed entries.</p></div>
+            </li>
+            <li>
+              <span class="benefit-icon">◈</span>
+              <div><strong>Consistent Performance Tracking</strong><p>Weekly and monthly reports keep you honest and reveal exactly where your edge comes from.</p></div>
+            </li>
+            <li>
+              <span class="benefit-icon">◈</span>
+              <div><strong>Designed for Modern Traders</strong><p>Whether you trade Forex, Gold, Indices, or Crypto, Venturer adapts to your markets and your style.</p></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Loved by traders worldwide</span>
+        <h2 class="section-title">What Our Community Says</h2>
+      </div>
+      <div class="testimonial-slider" id="testimonialSlider">
+        <div class="testimonial-track" id="testimonialTrack">
+          <div class="testimonial-card glass">
+            <div class="stars">★★★★★</div>
+            <p class="testi-text">"Venturer has completely transformed my trading. The accuracy and automation give me an edge every single day. My consistency has gone from 40% to over 70% win rate in three months."</p>
+            <div class="testi-author">
+              <div class="testi-avatar av-blue"></div>
+              <div>
+                <div class="testi-name">James R.</div>
+                <div class="testi-role">Funded Trader · United Kingdom</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card glass">
+            <div class="stars">★★★★★</div>
+            <p class="testi-text">"The AI signals are uncanny. I was skeptical at first but after two weeks of live trading, I was convinced. The risk management module alone saved my account from a major drawdown."</p>
+            <div class="testi-author">
+              <div class="testi-avatar av-gold"></div>
+              <div>
+                <div class="testi-name">Sofia M.</div>
+                <div class="testi-role">Forex Trader · Germany</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card glass">
+            <div class="stars">★★★★★</div>
+            <p class="testi-text">"Finally a trading platform that feels like it was built by traders. The dashboard is clean, the signals are sharp, and the journal keeps me accountable. Best investment I've made."</p>
+            <div class="testi-author">
+              <div class="testi-avatar av-green"></div>
+              <div>
+                <div class="testi-name">Ahmed K.</div>
+                <div class="testi-role">Prop Firm Trader · UAE</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slider-controls">
+          <button class="slider-btn" id="sliderPrev">‹</button>
+          <div class="slider-dots" id="sliderDots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+          <button class="slider-btn" id="sliderNext">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8: PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Simple, transparent pricing</span>
+        <h2 class="section-title">Choose Your Level</h2>
+        <p class="section-sub">No hidden fees. Cancel anytime. Start with a 7-day free trial.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-card glass reveal">
+          <div class="plan-name">Explorer</div>
+          <div class="plan-price"><span class="price-currency">$</span>29<span class="price-period">/mo</span></div>
+          <div class="plan-tagline">For traders getting started</div>
+          <ul class="plan-features">
+            <li class="feat-yes">AI Signals (Basic)</li>
+            <li class="feat-yes">Portfolio Analytics</li>
+            <li class="feat-yes">Trade Journal</li>
+            <li class="feat-yes">Risk Management</li>
+            <li class="feat-no">Auto Trading</li>
+            <li class="feat-no">Priority Support</li>
+            <li class="feat-no">Early Access Features</li>
+          </ul>
+          <a href="#" class="btn btn-outline btn-block">Get Started</a>
+        </div>
+
+        <div class="pricing-card glass featured reveal">
+          <div class="featured-badge">Most Popular</div>
+          <div class="plan-name">Professional</div>
+          <div class="plan-price"><span class="price-currency">$</span>79<span class="price-period">/mo</span></div>
+          <div class="plan-tagline">For serious full-time traders</div>
+          <ul class="plan-features">
+            <li class="feat-yes">AI Signals (Advanced)</li>
+            <li class="feat-yes">Auto Trading (Advanced)</li>
+            <li class="feat-yes">Portfolio Analytics Pro</li>
+            <li class="feat-yes">Risk Management Pro</li>
+            <li class="feat-yes">Priority Support</li>
+            <li class="feat-yes">Telegram Bot Access</li>
+            <li class="feat-no">Early Access Features</li>
+          </ul>
+          <a href="#" class="btn btn-gold btn-block">Get Started</a>
+          <div class="plan-glow"></div>
+        </div>
+
+        <div class="pricing-card glass reveal">
+          <div class="plan-name">Institutional</div>
+          <div class="plan-price"><span class="price-currency">$</span>199<span class="price-period">/mo</span></div>
+          <div class="plan-tagline">For prop firms & serious operators</div>
+          <ul class="plan-features">
+            <li class="feat-yes">Everything in Pro</li>
+            <li class="feat-yes">Multi-Account Management</li>
+            <li class="feat-yes">Custom Risk Parameters</li>
+            <li class="feat-yes">White-label Option</li>
+            <li class="feat-yes">Dedicated Account Manager</li>
+            <li class="feat-yes">API Access</li>
+            <li class="feat-yes">Early Access Features</li>
+          </ul>
+          <a href="#" class="btn btn-outline btn-block">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 9: FAQ -->
+  <section class="faq" id="faq">
+    <div class="container faq-inner">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Got questions?</span>
+        <h2 class="section-title">Frequently Asked</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <button class="faq-q">
+            <span>What is Venturer?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Venturer is an AI-powered trading companion that provides high-accuracy trade signals, automated execution, and intelligent risk management for Forex, Gold, and Indices traders. It's built for traders who want a professional edge without the complexity.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q">
+            <span>How accurate are the signals?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Our AI model delivers 98.6% signal accuracy based on backtested data and 2.1M+ signals delivered. Results in live trading depend on market conditions, risk settings, and execution, but our community consistently reports 65–80% win rates.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q">
+            <span>Can I automate my trades with Venturer?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Yes. On the Professional and Institutional plans, you can connect your MetaTrader account and enable fully automated trade execution. Venturer will place, manage, and close trades according to your configured risk parameters.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q">
+            <span>What brokers are supported?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Venturer integrates with all MT4 and MT5 compatible brokers. We're compatible with 200+ regulated brokers globally including IC Markets, Pepperstone, Exness, FTMO, and more. If your broker supports MetaTrader, you're good to go.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q">
+            <span>How does the risk management system work?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Our risk engine calculates position sizes dynamically based on your account balance, risk percentage per trade, and market volatility. It enforces daily drawdown limits, maximum concurrent positions, and automatically pauses trading if thresholds are breached.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 10: CTA -->
+  <section class="cta-section" id="cta">
+    <canvas id="ctaCanvas"></canvas>
+    <div class="cta-glow"></div>
+    <div class="container cta-inner reveal">
+      <span class="section-eyebrow">Your journey starts now</span>
+      <h2 class="cta-headline">Ready to Start Your Trading Journey?</h2>
+      <p class="cta-sub">Join 10,000+ traders who are already using Venturer to trade with precision and confidence.</p>
+      <div class="cta-actions">
+        <a href="#pricing" class="btn btn-gold btn-lg">Launch Venturer</a>
+        <a href="#" class="btn btn-outline btn-lg">Schedule Demo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="nav-logo">
+            <span class="logo-v">V</span>
+            <span class="logo-text">VENTURER</span>
+          </div>
+          <p class="footer-tagline">Your smart trading companion.<br/>AI-Powered. Automated. Accurate.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
+            <a href="#" class="social-link" aria-label="Telegram">✈</a>
+            <a href="#" class="social-link" aria-label="Discord">⚡</a>
+            <a href="#" class="social-link" aria-label="YouTube">▶</a>
+          </div>
+        </div>
+        <div class="footer-links-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Risk Disclosure</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-newsletter">
+          <h4>Stay Updated</h4>
+          <p>Get market insights and product updates.</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="your@email.com" class="newsletter-input" />
+            <button class="btn btn-gold btn-sm">Subscribe</button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Venturer. All Rights Reserved.</span>
+        <span class="footer-disclaimer">Trading involves risk. Past performance is not indicative of future results.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
